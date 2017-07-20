@@ -24,7 +24,7 @@
 
     <!--Инициализирующий скрипт-->
     <jdbc:initialize-database data-source="dataSource">
-    <jdbc:script location="../src/main/resources/sql/init.sql"/>
+    <jdbc:script location="./sql/init.sql"/>
     </jdbc:initialize-database>
 
 </beans>
