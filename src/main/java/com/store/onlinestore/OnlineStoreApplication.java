@@ -2,24 +2,25 @@ package com.store.onlinestore;
 
 import com.store.onlinestore.model.entity.User;
 import com.store.onlinestore.model.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.h2.tools.Server;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Arrays;
 
 @SpringBootApplication
 @Configuration
-//@ImportResource({"./context.xml"})
-public class OnlineStoreApplication {
+public class OnlineStoreApplication extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(OnlineStoreApplication.class);
+	}
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(OnlineStoreApplication.class, args);
