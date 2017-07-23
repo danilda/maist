@@ -6,3 +6,5 @@ before_install:
 sudo: false
 script: mvn clean verify
 
+notifications:
+  slack: maist:VaiT7AJ4AS8eIJA5bdHi6Tzv
