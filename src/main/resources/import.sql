@@ -1,3 +1,3 @@
-drop table users;
-create table users (id integer, login varchar2(30), password varchar2(30), role varchar2(30), version integer);
-insert into users values (0, 'admin', 'admin', 'admin', 1);
+insert into users values (0, 1, 'admin@mail.com', 'admin', 'admin',  1,);
+INSERT INTO roles VALUES (0 ,'R_ADMIN', 1);
+insert into AUTHORITIES values (0, 0);

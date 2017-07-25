@@ -1,6 +1,7 @@
 package com.store.onlinestore.model.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by dach1016 on 20.07.2017.
@@ -11,40 +12,37 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    @Column(name = "user_id")
+    private long userId;
     @Column(unique = true)
     private String login;
     private String password;
-    private String role;
+    private String email;
+    private int active;
     private int version;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     protected User() {
     }
 
-    public User(String login, String password, String role, int version) {
+    public User(String login, String password, String email, int active, int version, Set<Role> roles) {
         this.login = login;
         this.password = password;
-        this.role = role;
+        this.email = email;
+        this.active = active;
         this.version = version;
+        this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", version=" + version +
-                '}';
+    public long getUserId() {
+        return userId;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getLogin() {
@@ -63,12 +61,20 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public int getVersion() {
@@ -77,5 +83,28 @@ public class User {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        roles.forEach((e)->sb.append(e.getRole()).append(", "));
+        return "User{" +
+                "userId=" + userId +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", active=" + active +
+                ", version=" + version +
+                ", roles=" + sb.toString() +
+                '}';
     }
 }
