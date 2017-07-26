@@ -6,7 +6,7 @@
 
 <body>
     <div>
-        <form method="POST" class="">
+        <form method="POST" class="" action="/login">
             <h3 class="form-signin-heading">Добро пожаловать</h3><br>
             <p>Логин</p>
             <input type="text" id="login" name="login" class="form-control" /> <br>

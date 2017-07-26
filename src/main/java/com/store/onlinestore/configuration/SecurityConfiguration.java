@@ -40,8 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
                 .rolePrefix("R_")
-                .dataSource(dataSource)
-                .passwordEncoder(bCryptPasswordEncoder);
+                .dataSource(dataSource);
+//                .passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -51,21 +51,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/test").permitAll()
+                .antMatchers("/user").access("hasRole('R_ADMIN') and hasRole('R_USER')")
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/admin/**").hasAuthority("R_ADMIN").anyRequest()
-                .authenticated().and().csrf().disable().formLogin()
+                .antMatchers("/admin/**").hasAuthority("R_ADMIN").anyRequest().authenticated()
+                .and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/admin/home")
-                .usernameParameter("email")
+                .defaultSuccessUrl("/test")
+                .usernameParameter("login")
                 .passwordParameter("password")
-                .and().logout()
-                .deleteCookies("cookies")
+                .and().logout().deleteCookies("JSESSIONID")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
                 .accessDeniedPage("/access-denied")
-                .and().rememberMe().key("cookies");
-        http.headers().frameOptions().disable();
+                .and().rememberMe().useSecureCookie(true).tokenValiditySeconds(1209600)
+                .and().headers().frameOptions().disable();
     }
 
     @Override
