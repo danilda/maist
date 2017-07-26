@@ -27,10 +27,12 @@ public class OnlineStoreApplication extends SpringBootServletInitializer {
 		ApplicationContext ctx = SpringApplication.run(OnlineStoreApplication.class, args);
 
 		UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
-		User user = userRepository.findByLogin("admin");
+		User admin = userRepository.findByLogin("admin");
+		User user = userRepository.findByLogin("user");
 
 		System.out.println("aaaaaaa");
 		System.out.println(user.toString());
+		System.out.println(admin.toString());
 		log.info(user.toString());
 
 	}

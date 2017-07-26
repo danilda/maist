@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
-                .rolePrefix("R_")
+//                .rolePrefix("R_")
                 .dataSource(dataSource);
 //                .passwordEncoder(bCryptPasswordEncoder);
     }
@@ -51,11 +51,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/test").permitAll()
-                .antMatchers("/user").access("hasRole('R_ADMIN') and hasRole('R_USER')")
+                .antMatchers("/test").permitAll().anyRequest().authenticated()
+                .antMatchers("/user/**").access("hasRole('R_ADMIN') and hasRole('R_USER')").anyRequest().authenticated()
+                .antMatchers("/admin/**").hasRole("R_ADMIN").anyRequest().authenticated()
+//                .antMatchers("/admin/**").access("hasRole('R_ADMIN')")
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/admin/**").hasAuthority("R_ADMIN").anyRequest().authenticated()
+//                .antMatchers("/admin/**").hasAuthority("R_ADMIN")
                 .and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/test")
