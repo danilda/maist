@@ -11,8 +11,8 @@ notifications:
     rooms:
       secure: edU32p1Ch3zRtJMGJS1cZ0wH0g7hGhjpT1BkJ4WoL/IZAveiA6oJ5R4Qgr10+G4DCMU9Bi6+W0hcVrRyLovGzbMukOFpXreoAlq7lxthR8XsJ/Pxvx2aeBlccoFbqu4g6kzCPKzvrcG1BjvAbNYaVL2Lng7pd3gR3OgyhARGBRPTNVC44T5/EoZTO9Wco7hahcyzPx33Hv4SgGYkOBqG/JHVLsEk4ArjfNh8dOP+KnMqKlV4KMvFGkzKEcDXGHEOjCkgua756CE2sO9bczpM6s/yahfu0JlM2NtM0MUTwpaFziShhI/4HxnbAEnq7sKTySJYKq2rUvBP+cdPfwFY//nmC/7ALa3ib6BZcV4oCI1qiJtz9FQRbW38WXo3k0idBCi+WSS3cNRWaiIBu7LfFEBQ3oe4UM+0Y4ETokHXK79yr6TixFsN98KsbLWBMYai2PeN4cgcpVTHO/aCeR7a34oCyqj1zCyxlpLldr+Y7qR1QzMcmPFP0JEHpL/5CD0j4i7SZ/xRA6baW/3VDkr8n1ZzA30EimzYPiABBwg8N6vfnezbSL8QxhTuP9n6q0vO6D79mQsvNIU2pBJnNdQ06ouHV3tdzra0EFKdRXb8kDQgGzzTycD+iPbbjTY9ADRKHkMyXwozD+J0ZVjVwgPdrGzZheMfuyd5EF2Sm2vwAhA=
     template:
-         - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}
-         - Build details: %{build_url}
+         - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}'
+         - 'Build details: %{build_url}'
   email:
     recipients:
       - chelyadin.anton.12@gmail.com
