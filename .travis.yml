@@ -2,7 +2,7 @@ language: java
 jdk:
   - oraclejdk8
 before_install:
-  - chmod +x mvnw$HEROKU_AUTH_TOKEN
+  - chmod +x mvnw
 sudo: false
 script: mvn clean verify
 
