@@ -2,7 +2,7 @@ language: java
 jdk:
   - oraclejdk8
 before_install:
-  - chmod +x mvnw
+  - chmod +x mvnw$HEROKU_AUTH_TOKEN
 sudo: false
 script: mvn clean verify
 
@@ -20,7 +20,7 @@ notifications:
     on_failure: always # default: always
 deploy:
   provider: heroku
-  api_key: $HEROKU_AUTH_TOKEN
+  api_key: 8e666654-0f04-44ed-b513-d384e9190d2d
 #  api_key:
 #    secure: IYWSiWT1Vbrk7vHUJL3wWQaklIJrMGIOAjSoBH/GXIag6k93xBgYw0iim/OrQPkCo1tUxanJbND46pbhqyJ0V/0efeStgiylVuwqRMOb+x8XCneRm1zFiyWgny6eAt/hwcIzM2939M6d/qv/tpzrpX1TCSEQUlPwbQ7OQd8eWh+K9BNLAxRN9m7e0svFwwUJjOM0e55ZTM5nf4Mt7vfugggD/dBXYJZlWSp0201Kaj+y10pil2sqvi8D3V6+fAm7ZZhszwp8gWOxrm8DRMTrzlhZcyH7662tIAZg2xiv9qMBOv0T+Yb4wgl2OmPZI3LP9npKMIyBDNVa7axYLphfOxCxE2KhuMyPj4hz/QQxAg4PgP4u07WAq4Z2bQ02MZW1mVrS9S3SYhDCebsFz7MNQJnGPZBaWI0NTeitubT16n5Q+mOhsqv8WH3AHM6hSg1KMMhlGi3xqdncCmWwQNXcbaFFCTzTOinVyHkOW7BGIuyl+hmTTlgreEVzmCWUb52WAr1fTTadCgC6PKhyoygoWhxjy1EG5c/8nn2i20j+ZWTAIh56W+/6cF2UtO9pmm1M30wB6y5/QVQU4kFmu1gRWTqUu0eNVoMJXNgCy8RhkiO0vGkKUhJH2I2ai0FPQBXYSWySYNcQHl7IeYY4xl9xS+0dsW+LfLDxpC5FwBhPjCU=
   app: online-store
