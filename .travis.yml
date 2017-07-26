@@ -1,24 +1,25 @@
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 before_install:
-- chmod +x mvnw
+  - chmod +x mvnw
 sudo: false
 script: mvn clean verify
+
 notifications:
   slack:
     rooms:
       secure: edU32p1Ch3zRtJMGJS1cZ0wH0g7hGhjpT1BkJ4WoL/IZAveiA6oJ5R4Qgr10+G4DCMU9Bi6+W0hcVrRyLovGzbMukOFpXreoAlq7lxthR8XsJ/Pxvx2aeBlccoFbqu4g6kzCPKzvrcG1BjvAbNYaVL2Lng7pd3gR3OgyhARGBRPTNVC44T5/EoZTO9Wco7hahcyzPx33Hv4SgGYkOBqG/JHVLsEk4ArjfNh8dOP+KnMqKlV4KMvFGkzKEcDXGHEOjCkgua756CE2sO9bczpM6s/yahfu0JlM2NtM0MUTwpaFziShhI/4HxnbAEnq7sKTySJYKq2rUvBP+cdPfwFY//nmC/7ALa3ib6BZcV4oCI1qiJtz9FQRbW38WXo3k0idBCi+WSS3cNRWaiIBu7LfFEBQ3oe4UM+0Y4ETokHXK79yr6TixFsN98KsbLWBMYai2PeN4cgcpVTHO/aCeR7a34oCyqj1zCyxlpLldr+Y7qR1QzMcmPFP0JEHpL/5CD0j4i7SZ/xRA6baW/3VDkr8n1ZzA30EimzYPiABBwg8N6vfnezbSL8QxhTuP9n6q0vO6D79mQsvNIU2pBJnNdQ06ouHV3tdzra0EFKdRXb8kDQgGzzTycD+iPbbjTY9ADRKHkMyXwozD+J0ZVjVwgPdrGzZheMfuyd5EF2Sm2vwAhA=
     template:
-    - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch}
-      by %{author} %{result} in %{duration}
-    - 'Build details: %{build_url}'
+         - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}
+         - Build details: %{build_url}
   email:
     recipients:
-    - chelyadin.anton.12@gmail.com
-    on_success: never
-    on_failure: always
+      - chelyadin.anton.12@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
 deploy:
   provider: heroku
   api_key:
-    secure: cGmI8NnDutpAPwI95cG1rOAawEIiXFr+rOsivzDWNys3YQIKyY3TJr4oopbNKdZgwyyz+puynIPqmoEJAzA10zW1L5v5cCVfuHqh4+w4L26HfwjTaeEmPHFxMTiKOFxUnrwLnCpHPOZ60VqYdTS5EZsIAuLH++3lM3t/mZTXDHtmElHO8YvJ/CSdGX8VSzAzDIgNQXoLnIqOa7XW9gl1tF06N6FSBKgIliw8A2BOfIhPDygqrqKU2V+AlHJGBmcyhTy+W3zH+6FAUPF2Z6sIOYuC+KeBJg5w29al/GEG1EthAHn3XDl2soG0nGp2irzQk6/35N3j+6YwswJNw19J5EUKDE7f3Ld43afxisZqyOFf3pB1aztY49NqmTCf+e0JdUrx5i1W87hnLU7MJeSnfiTZabtj0LHn4kw2LxPU4BqzOHzTV7tBYv/htB9jsNrILwosjPCYJ3Nw2nvDYX1LeEclvFBS/w/iGTlh2F2vSZ5vg/a4Bbaa+Gwi8M9unsJ78GZnadlY4aP01EstDBJgCP1e1L33MBrp1YNYqmaU++iQyc5AeReDYCphN+DkhQh1ozKNYtnIjnPxJlVYNcF0cN5HGzBj25iO1EanOLpnGWj9t6CSH1H6YPMmR3igy8FgWR3Uu6acqXt1wXiozdXuUX96N+QNGx6zlIDaerUTTnk=
+    secure: IYWSiWT1Vbrk7vHUJL3wWQaklIJrMGIOAjSoBH/GXIag6k93xBgYw0iim/OrQPkCo1tUxanJbND46pbhqyJ0V/0efeStgiylVuwqRMOb+x8XCneRm1zFiyWgny6eAt/hwcIzM2939M6d/qv/tpzrpX1TCSEQUlPwbQ7OQd8eWh+K9BNLAxRN9m7e0svFwwUJjOM0e55ZTM5nf4Mt7vfugggD/dBXYJZlWSp0201Kaj+y10pil2sqvi8D3V6+fAm7ZZhszwp8gWOxrm8DRMTrzlhZcyH7662tIAZg2xiv9qMBOv0T+Yb4wgl2OmPZI3LP9npKMIyBDNVa7axYLphfOxCxE2KhuMyPj4hz/QQxAg4PgP4u07WAq4Z2bQ02MZW1mVrS9S3SYhDCebsFz7MNQJnGPZBaWI0NTeitubT16n5Q+mOhsqv8WH3AHM6hSg1KMMhlGi3xqdncCmWwQNXcbaFFCTzTOinVyHkOW7BGIuyl+hmTTlgreEVzmCWUb52WAr1fTTadCgC6PKhyoygoWhxjy1EG5c/8nn2i20j+ZWTAIh56W+/6cF2UtO9pmm1M30wB6y5/QVQU4kFmu1gRWTqUu0eNVoMJXNgCy8RhkiO0vGkKUhJH2I2ai0FPQBXYSWySYNcQHl7IeYY4xl9xS+0dsW+LfLDxpC5FwBhPjCU=
+  app: still-crag-49477
