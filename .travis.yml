@@ -1,26 +1,27 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 before_install:
-  - chmod +x mvnw
+- chmod +x mvnw
 sudo: false
 script: mvn clean verify
-
 notifications:
   slack:
     rooms:
       secure: edU32p1Ch3zRtJMGJS1cZ0wH0g7hGhjpT1BkJ4WoL/IZAveiA6oJ5R4Qgr10+G4DCMU9Bi6+W0hcVrRyLovGzbMukOFpXreoAlq7lxthR8XsJ/Pxvx2aeBlccoFbqu4g6kzCPKzvrcG1BjvAbNYaVL2Lng7pd3gR3OgyhARGBRPTNVC44T5/EoZTO9Wco7hahcyzPx33Hv4SgGYkOBqG/JHVLsEk4ArjfNh8dOP+KnMqKlV4KMvFGkzKEcDXGHEOjCkgua756CE2sO9bczpM6s/yahfu0JlM2NtM0MUTwpaFziShhI/4HxnbAEnq7sKTySJYKq2rUvBP+cdPfwFY//nmC/7ALa3ib6BZcV4oCI1qiJtz9FQRbW38WXo3k0idBCi+WSS3cNRWaiIBu7LfFEBQ3oe4UM+0Y4ETokHXK79yr6TixFsN98KsbLWBMYai2PeN4cgcpVTHO/aCeR7a34oCyqj1zCyxlpLldr+Y7qR1QzMcmPFP0JEHpL/5CD0j4i7SZ/xRA6baW/3VDkr8n1ZzA30EimzYPiABBwg8N6vfnezbSL8QxhTuP9n6q0vO6D79mQsvNIU2pBJnNdQ06ouHV3tdzra0EFKdRXb8kDQgGzzTycD+iPbbjTY9ADRKHkMyXwozD+J0ZVjVwgPdrGzZheMfuyd5EF2Sm2vwAhA=
     template:
-         - 'Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch} by %{author} %{result} in %{duration}'
-         - 'Build details: %{build_url}'
+    - Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository}@%{branch}
+      by %{author} %{result} in %{duration}
+    - 'Build details: %{build_url}'
   email:
     recipients:
-      - chelyadin.anton.12@gmail.com
-    on_success: never # default: change
-    on_failure: always # default: always
+    - chelyadin.anton.12@gmail.com
+    on_success: never
+    on_failure: always
 deploy:
   provider: heroku
-  api_key: 8e666654-0f04-44ed-b513-d384e9190d2d
-#  api_key:
-#    secure: IYWSiWT1Vbrk7vHUJL3wWQaklIJrMGIOAjSoBH/GXIag6k93xBgYw0iim/OrQPkCo1tUxanJbND46pbhqyJ0V/0efeStgiylVuwqRMOb+x8XCneRm1zFiyWgny6eAt/hwcIzM2939M6d/qv/tpzrpX1TCSEQUlPwbQ7OQd8eWh+K9BNLAxRN9m7e0svFwwUJjOM0e55ZTM5nf4Mt7vfugggD/dBXYJZlWSp0201Kaj+y10pil2sqvi8D3V6+fAm7ZZhszwp8gWOxrm8DRMTrzlhZcyH7662tIAZg2xiv9qMBOv0T+Yb4wgl2OmPZI3LP9npKMIyBDNVa7axYLphfOxCxE2KhuMyPj4hz/QQxAg4PgP4u07WAq4Z2bQ02MZW1mVrS9S3SYhDCebsFz7MNQJnGPZBaWI0NTeitubT16n5Q+mOhsqv8WH3AHM6hSg1KMMhlGi3xqdncCmWwQNXcbaFFCTzTOinVyHkOW7BGIuyl+hmTTlgreEVzmCWUb52WAr1fTTadCgC6PKhyoygoWhxjy1EG5c/8nn2i20j+ZWTAIh56W+/6cF2UtO9pmm1M30wB6y5/QVQU4kFmu1gRWTqUu0eNVoMJXNgCy8RhkiO0vGkKUhJH2I2ai0FPQBXYSWySYNcQHl7IeYY4xl9xS+0dsW+LfLDxpC5FwBhPjCU=
-#  app: online-store
+  api_key:
+    secure: jweZX3VeQssNRIvf8AwdiJNHh+cYZIhZRVUh97MTN+yTyID276GKUMtCbYpWwj4u+4VkZxfh2eNR9U9p4pe3ipd16+bOzuy/M7KMP0XnGvKv+nEoLs6/aWSB+qEGsEBa4Y7GWX5ZbJ7ZTuFDvFNaBhz0oIctbJweAYSmYyb43iOgOUaZeWbfUlWnsiJyXy5KP5oathmg77jJoRaa3KEYAA/1fJmHz3oyNuXvQoWHnn4cPn5v30Nd/SOeDho+zoliFiadnNsACPVeT5DzE1g/VegDIgilHSP6ChGLRe8neYuoEn0nkSj8vGog7eFm7LWf9yc6V2A5/Z0KnxrNZmnrH1UJgPmUGJ4MKd30GeWbZXkRzb+Zz0GHA6zYxPupTReI7+ac2yG7Wrp7bnHVkQp4YqhfIwhWq//z9VRJp8L7pJ8r4ObW5Xre6eA/WbxXSUN3DNHX6igM8OKYRKioAQJ7njLSBsbFBAFo9rhrJUA+LTvLci8ZH9Z5dIkAr0E9Qk7LwaXEi15shFnV9xKS1Z87mI2LiR4wla2o7tk83/DrheXu1fqGn2vOMmeUSJkfbPCBi2GT1bTGt9ZvhmQgCvmW1Z+8uRSWrSgXB76wSDOD5PFRNlr5RSYSAwg6dXyuzXB43dFRHFAH85QH5YmEV2+gV+2QjjgPhN5rojX97m6DL88=
+  app: online-store
+  on:
+    repo: danilda/online-store
