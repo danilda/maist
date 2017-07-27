@@ -22,6 +22,6 @@ deploy:
   provider: heroku
   api_key:
     secure: jweZX3VeQssNRIvf8AwdiJNHh+cYZIhZRVUh97MTN+yTyID276GKUMtCbYpWwj4u+4VkZxfh2eNR9U9p4pe3ipd16+bOzuy/M7KMP0XnGvKv+nEoLs6/aWSB+qEGsEBa4Y7GWX5ZbJ7ZTuFDvFNaBhz0oIctbJweAYSmYyb43iOgOUaZeWbfUlWnsiJyXy5KP5oathmg77jJoRaa3KEYAA/1fJmHz3oyNuXvQoWHnn4cPn5v30Nd/SOeDho+zoliFiadnNsACPVeT5DzE1g/VegDIgilHSP6ChGLRe8neYuoEn0nkSj8vGog7eFm7LWf9yc6V2A5/Z0KnxrNZmnrH1UJgPmUGJ4MKd30GeWbZXkRzb+Zz0GHA6zYxPupTReI7+ac2yG7Wrp7bnHVkQp4YqhfIwhWq//z9VRJp8L7pJ8r4ObW5Xre6eA/WbxXSUN3DNHX6igM8OKYRKioAQJ7njLSBsbFBAFo9rhrJUA+LTvLci8ZH9Z5dIkAr0E9Qk7LwaXEi15shFnV9xKS1Z87mI2LiR4wla2o7tk83/DrheXu1fqGn2vOMmeUSJkfbPCBi2GT1bTGt9ZvhmQgCvmW1Z+8uRSWrSgXB76wSDOD5PFRNlr5RSYSAwg6dXyuzXB43dFRHFAH85QH5YmEV2+gV+2QjjgPhN5rojX97m6DL88=
-  app: online-store
-  on:
-    repo: danilda/online-store
+#  app: online-store
+#  on:
+#    repo: danilda/online-store
