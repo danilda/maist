@@ -39,7 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
-//                .rolePrefix("R_")
+                .rolePrefix("")
                 .dataSource(dataSource);
 //                .passwordEncoder(bCryptPasswordEncoder);
     }
@@ -51,13 +51,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/test").permitAll().anyRequest().authenticated()
-                .antMatchers("/user/**").access("hasRole('R_ADMIN') and hasRole('R_USER')").anyRequest().authenticated()
-                .antMatchers("/admin/**").hasRole("R_ADMIN").anyRequest().authenticated()
-//                .antMatchers("/admin/**").access("hasRole('R_ADMIN')")
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/registration").permitAll()
-//                .antMatchers("/admin/**").hasAuthority("R_ADMIN")
+                .antMatchers("/test").permitAll()
+                .antMatchers("/user").hasAnyAuthority("ADMIN","USER")
+                .antMatchers("/admin").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
                 .and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/test")
@@ -68,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/").and().exceptionHandling()
                 .accessDeniedPage("/access-denied")
                 .and().rememberMe().useSecureCookie(true).tokenValiditySeconds(1209600)
-                .and().headers().frameOptions().disable();
+                .and().headers().frameOptions().disable(); // for H2 console
     }
 
     @Override
