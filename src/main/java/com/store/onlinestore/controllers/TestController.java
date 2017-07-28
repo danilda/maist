@@ -8,16 +8,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by dach1016 on 26.07.2017.
- * Test controller for test.jsp/user.jsp/admin.jsp
+ * Test controller for home.jsp/user.jsp/admin.jsp
  */
 
 @Controller
 public class TestController {
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public ModelAndView test(){
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("test");
+        modelAndView.setViewName("home");
         return modelAndView;
     }
 

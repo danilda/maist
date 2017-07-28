@@ -25,7 +25,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    protected User() {
+    public User() {
     }
 
     public User(String login, String password, String email, int active, int version, Set<Role> roles) {
