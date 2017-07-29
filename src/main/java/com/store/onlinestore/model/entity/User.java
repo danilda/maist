@@ -96,7 +96,8 @@ public class User {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        roles.forEach((e)->sb.append(e.getRole()).append(", "));
+        if(roles!= null)
+            roles.forEach((e)->sb.append(e.getRole()).append(", "));
         return "User{" +
                 "userId=" + userId +
                 ", login='" + login + '\'' +

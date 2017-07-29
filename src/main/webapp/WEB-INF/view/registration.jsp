@@ -10,25 +10,28 @@
         <h3 class="form-signin-heading">Добро пожаловать</h3>
             <fieldset class="inputContainer">
 
-                <form:label path="login">Логин</form:label>
-                <form:input path="login"/>
+                <form:label path="login">Логин</form:label><br>
+                <form:input path="login"/><br>
 
-                <form:label path="password">Пароль</form:label>
-                <form:password cssClass="password" path="password"/>
 
-                <label for="check-password">Повторите пароль</label>
+                <form:label path="password">Пароль</form:label><br>
+                <form:password cssClass="password" path="password"/><br>
+
+                <label for="check-password">Повторите пароль</label><br>
                 <input type="password" name="check-password" class="check-password" /><br>
 
-                <form:label path="email">Электронная почта</form:label>
-                <form:input path="email"/>
+                <form:label path="email">Электронная почта</form:label><br>
+                <form:input path="email"/><br>
 
             </fieldset>
             <footer>
                 <input type="submit" class="btnReg" value="Зарегистрировать"/>
             </footer>
         </form:form>
+        <div>${error}</div>
         <% if(request.getParameter("error") != null) {%>
-            <div>Неподходящий логин или пароль</div>
+
+
         <%}%>
     </div>
 </body>

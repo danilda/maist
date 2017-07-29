@@ -1,6 +1,8 @@
 package com.store.onlinestore.controllers;
 
 import com.store.onlinestore.model.entity.User;
+import com.store.onlinestore.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RegistrationController {
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         return new ModelAndView("registration", "user", new User());
@@ -22,8 +27,9 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@ModelAttribute("user") User user){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("registration");
-        return modelAndView;
+        if(userService.findUserByLogin(user.getLogin())!=null)
+            return new ModelAndView("registration", "error", "Такой логин уже используеться");
+        userService.saveUser(user);
+        return new ModelAndView("login");
     }
 }

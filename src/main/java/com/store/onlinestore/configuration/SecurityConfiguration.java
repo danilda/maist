@@ -40,8 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
                 .rolePrefix("")
-                .dataSource(dataSource);
-//                .passwordEncoder(bCryptPasswordEncoder);
+                .dataSource(dataSource)
+                .passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/test")
+                .defaultSuccessUrl("/")
                 .usernameParameter("login")
                 .passwordParameter("password")
                 .and().logout().deleteCookies("JSESSIONID")
