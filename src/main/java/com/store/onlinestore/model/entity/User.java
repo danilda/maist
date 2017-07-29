@@ -1,6 +1,10 @@
 package com.store.onlinestore.model.entity;
 
+import org.hibernate.validator.constraints.Email;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 /**
@@ -15,8 +19,14 @@ public class User {
     @Column(name = "user_id")
     private long userId;
     @Column(unique = true)
+    @Size(min = 4, message = "Логин должен иметь не менее 4 символов")
+    @NotNull
     private String login;
+    @Size(min = 4, message = "Пароль должен иметь не менее 4 символов")
+    @NotNull
     private String password;
+    @NotNull
+    @Email
     private String email;
     private int active;
     private int version;

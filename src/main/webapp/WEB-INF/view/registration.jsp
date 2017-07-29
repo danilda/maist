@@ -11,17 +11,19 @@
             <fieldset class="inputContainer">
 
                 <form:label path="login">Логин</form:label><br>
-                <form:input path="login"/><br>
-
+                <form:input path="login"/>
+                <form:errors path="login" cssClass="error-msg" /><br>
 
                 <form:label path="password">Пароль</form:label><br>
-                <form:password cssClass="password" path="password"/><br>
+                <form:password cssClass="password" path="password"/>
+                <form:errors path="password" cssClass="error-msg" /><br>
 
                 <label for="check-password">Повторите пароль</label><br>
                 <input type="password" name="check-password" class="check-password" /><br>
 
                 <form:label path="email">Электронная почта</form:label><br>
-                <form:input path="email"/><br>
+                <form:input path="email"/>
+                <form:errors path="email" cssClass="error-msg" /><br>
 
             </fieldset>
             <footer>
@@ -29,10 +31,6 @@
             </footer>
         </form:form>
         <div>${error}</div>
-        <% if(request.getParameter("error") != null) {%>
-
-
-        <%}%>
     </div>
 </body>
 </html>

@@ -4,10 +4,13 @@ import com.store.onlinestore.model.entity.User;
 import com.store.onlinestore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 /**
  * Created by dach1016 on 27.07.2017.
@@ -26,9 +29,12 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@ModelAttribute("user") User user){
+    public ModelAndView createNewUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
         if(userService.findUserByLogin(user.getLogin())!=null)
             return new ModelAndView("registration", "error", "Такой логин уже используеться");
+        if(bindingResult.hasErrors())
+            return new ModelAndView("registration", "error", bindingResult.getAllErrors().get(0).getDefaultMessage());
+
         userService.saveUser(user);
         return new ModelAndView("login");
     }
