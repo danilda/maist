@@ -1,4 +1,4 @@
-package com.store.onlinestore.controllers;
+package ua.com.maist.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

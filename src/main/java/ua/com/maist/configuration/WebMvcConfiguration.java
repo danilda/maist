@@ -1,4 +1,4 @@
-package com.store.onlinestore.configuration;
+package ua.com.maist.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
