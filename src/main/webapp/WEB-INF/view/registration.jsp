@@ -25,12 +25,25 @@
                 <form:input path="email"/>
                 <form:errors path="email" cssClass="error-msg" /><br>
 
+                <form:label path="firstName">Имя</form:label><br>
+                <form:input path="firstName"/>
+                <form:errors path="firstName" cssClass="error-msg" /><br>
+
+                <form:label path="lastName">Фамилия</form:label><br>
+                <form:input path="lastName"/>
+                <form:errors path="lastName" cssClass="error-msg" /><br>
+
+                <form:label path="phone">Фамилия</form:label><br>
+                <form:input path="phone"/>
+                <form:errors path="phone" cssClass="error-msg" /><br>
+
             </fieldset>
             <footer>
                 <input type="submit" class="btnReg" value="Зарегистрировать"/>
             </footer>
         </form:form>
         <div>${error}</div>
+        <div>${passerror}</div>
     </div>
 </body>
 </html>

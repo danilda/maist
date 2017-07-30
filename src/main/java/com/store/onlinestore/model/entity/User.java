@@ -12,12 +12,10 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "user_id")
-    private long userId;
+    private long id;
     @Column(unique = true)
     @Size(min = 4, message = "Логин должен иметь не менее 4 символов")
     @NotNull
@@ -34,25 +32,34 @@ public class User {
     @JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    private String phone;
 
     public User() {
     }
 
-    public User(String login, String password, String email, int active, int version, Set<Role> roles) {
+    public User(String login, String password, String email, int active, int version,
+                Set<Role> roles, String firstName, String lastName, String phone) {
         this.login = login;
         this.password = password;
         this.email = email;
         this.active = active;
         this.version = version;
         this.roles = roles;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -103,19 +110,46 @@ public class User {
         this.roles = roles;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if(roles!= null)
             roles.forEach((e)->sb.append(e.getRole()).append(", "));
         return "User{" +
-                "userId=" + userId +
+                "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", active=" + active +
                 ", version=" + version +
                 ", roles=" + sb.toString() +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }
