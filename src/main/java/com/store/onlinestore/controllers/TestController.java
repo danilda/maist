@@ -15,21 +15,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class TestController {
 
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-    public ModelAndView home(){
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home");
         return modelAndView;
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ModelAndView user(){
+    public ModelAndView user() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user");
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public ModelAndView admin(User user){
+    public ModelAndView admin(User user) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin");
         System.out.println(user.getRoles());
@@ -37,7 +37,7 @@ public class TestController {
     }
 
     @RequestMapping(value = "/access-denied")
-    public ModelAndView accessDenied(){
+    public ModelAndView accessDenied() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/access-denied");
         return modelAndView;

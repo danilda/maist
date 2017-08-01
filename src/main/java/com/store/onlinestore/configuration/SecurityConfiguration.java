@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 
 /**
  * Created by dach1016 on 24.07.2017.
- *
  */
 
 @Configuration
@@ -54,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/user").hasAnyAuthority("ADMIN","USER")
+                .antMatchers("/user").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/admin").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable().formLogin()

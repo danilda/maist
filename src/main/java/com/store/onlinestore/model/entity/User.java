@@ -17,7 +17,7 @@ import java.util.Set;
 @FieldEquals(firstField = "password", secondField = "confirmPassword", message = "Не соответствует указанному паролю")
 public class User {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(unique = true)
     @Size(min = 4, message = "Логин должен иметь не менее 4 символов")
@@ -151,8 +151,8 @@ public class User {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        if(roles!= null)
-            roles.forEach((e)->sb.append(e.getRole()).append(", "));
+        if (roles != null)
+            roles.forEach((e) -> sb.append(e.getRole()).append(", "));
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +

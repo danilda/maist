@@ -4,13 +4,12 @@ import javax.persistence.*;
 
 /**
  * Created by dach1016 on 24.07.2017.
- *
  */
 @Entity
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Column(name = "id")
     private int id;
     private String role;
     private int version;

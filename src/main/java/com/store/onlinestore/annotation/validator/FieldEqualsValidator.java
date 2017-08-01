@@ -27,18 +27,20 @@ public class FieldEqualsValidator implements ConstraintValidator<FieldEquals, Ob
     @Override
     public boolean isValid(Object annotatedObj, ConstraintValidatorContext context) {
         try {
-            Object firstFieldValue = getProperty(annotatedObj, firstField, null);
-            Object secondFieldValue = getProperty(annotatedObj, secondField, null);
-            context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(message).addPropertyNode(secondField).addConstraintViolation();
-            if(firstFieldValue == null && secondFieldValue == null ||
-                    firstFieldValue != null && firstFieldValue.equals(secondFieldValue)) {
-                return true;
-            }
-        } catch (Exception e){
+            return unhandledValidation(annotatedObj, context);
+        } catch (Exception e) {
             logger.error(e.getMessage());
         }
         return false;
+    }
+
+    private boolean unhandledValidation(Object annotatedObj, ConstraintValidatorContext context) {
+        Object firstFieldValue = getProperty(annotatedObj, firstField, null);
+        Object secondFieldValue = getProperty(annotatedObj, secondField, null);
+        context.disableDefaultConstraintViolation();
+        context.buildConstraintViolationWithTemplate(message).addPropertyNode(secondField).addConstraintViolation();
+        return firstFieldValue == null && secondFieldValue == null ||
+                firstFieldValue != null && firstFieldValue.equals(secondFieldValue);
     }
 
     private Object getProperty(Object annotatedObj, String fieldName,
