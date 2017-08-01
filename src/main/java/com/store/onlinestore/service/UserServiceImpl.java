@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(encoder.encode(user.getPassword()));
         user.setActive(1);
         user.setVersion(1);
+        user.setConfirmPassword(user.getPassword()); // in encoding process two equal become no equal.
         Role role = roleRepository.findByRole(defaultRole);
         user.setRoles(new HashSet<>(Collections.singletonList(role)));
         userRepository.save(user);

@@ -18,8 +18,9 @@
                 <form:password cssClass="password" path="password"/>
                 <form:errors path="password" cssClass="error-msg" /><br>
 
-                <label for="check-password">Повторите пароль</label><br>
-                <input type="password" name="check-password" class="check-password" /><br>
+                <form:label path="confirmPassword">Пароль</form:label><br>
+                <form:password cssClass="confirmPassword" path="confirmPassword"/>
+                <form:errors path="confirmPassword" cssClass="error-msg" /><br>
 
                 <form:label path="email">Электронная почта</form:label><br>
                 <form:input path="email"/>
@@ -33,7 +34,7 @@
                 <form:input path="lastName"/>
                 <form:errors path="lastName" cssClass="error-msg" /><br>
 
-                <form:label path="phone">Фамилия</form:label><br>
+                <form:label path="phone">Телефон</form:label><br>
                 <form:input path="phone"/>
                 <form:errors path="phone" cssClass="error-msg" /><br>
 

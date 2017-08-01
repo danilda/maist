@@ -1,6 +1,8 @@
 package com.store.onlinestore.model.entity;
 
+import com.store.onlinestore.annotation.FieldEquals;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +14,7 @@ import java.util.Set;
  */
 
 @Entity
+@FieldEquals(firstField = "password", secondField = "confirmPassword", message = "Не соответствует указанному паролю")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -23,6 +26,9 @@ public class User {
     @Size(min = 4, message = "Пароль должен иметь не менее 4 символов")
     @NotNull
     private String password;
+    @Transient
+    @NotBlank
+    private String confirmPassword;
     @NotNull
     @Email
     private String email;
@@ -132,6 +138,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     @Override
