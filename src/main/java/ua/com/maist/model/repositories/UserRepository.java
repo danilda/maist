@@ -5,7 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  * Created by dach1016 on 20.07.2017.
- *
  */
 
 

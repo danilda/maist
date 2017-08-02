@@ -11,7 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.h2.tools.Server;
 import org.springframework.context.annotation.Configuration;
-
 import java.sql.SQLException;
 
 @SpringBootApplication
@@ -27,18 +26,20 @@ public class MaistApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(MaistApplication.class, args);
 
-		UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
-		User user = userRepository.findByLogin("admin");
+        UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
+        User admin = userRepository.findByLogin("admin");
+        User user = userRepository.findByLogin("user");
 
-		System.out.println("aaaaaaa");
-		System.out.println(user.toString());
-		log.info(user.toString());
+        System.out.println("aaaaaaa");
+        System.out.println(user.toString());
+        System.out.println(admin.toString());
+        log.info(user.toString());
 
-	}
+    }
 
-	@Bean(initMethod = "start", destroyMethod = "stop")
-	public Server h2Server() throws SQLException {
-		return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9093");
-	}
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public Server h2Server() throws SQLException {
+        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9093");
+    }
 
 }
