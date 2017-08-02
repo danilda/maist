@@ -1,7 +1,7 @@
-package com.store.onlinestore.controllers;
+package ua.com.maist.controllers;
 
-import com.store.onlinestore.model.entity.User;
-import com.store.onlinestore.service.UserService;
+import ua.com.maist.model.entity.User;
+import ua.com.maist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

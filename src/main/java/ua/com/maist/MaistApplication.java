@@ -1,6 +1,9 @@
 package ua.com.maist;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import ua.com.maist.model.entity.Order;
 import ua.com.maist.model.entity.User;
+import ua.com.maist.model.repositories.OrderRepository;
 import ua.com.maist.model.repositories.UserRepository;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
@@ -12,11 +15,14 @@ import org.springframework.context.annotation.Bean;
 import org.h2.tools.Server;
 import org.springframework.context.annotation.Configuration;
 import java.sql.SQLException;
+import java.util.Date;
 
 @SpringBootApplication
 @Configuration
 public class MaistApplication extends SpringBootServletInitializer {
 	private static final Logger log = Logger.getLogger(MaistApplication.class);
+
+
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -34,6 +40,9 @@ public class MaistApplication extends SpringBootServletInitializer {
         System.out.println(user.toString());
         System.out.println(admin.toString());
         log.info(user.toString());
+        Order order = new Order(user,new Date(), 666);
+        OrderRepository repository = (OrderRepository) ctx.getBean("orderRepository");
+        repository.save(order);
 
     }
 

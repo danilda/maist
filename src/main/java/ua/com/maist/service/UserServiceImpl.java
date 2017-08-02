@@ -1,13 +1,14 @@
-package com.store.onlinestore.service;
+package ua.com.maist.service;
 
-import com.store.onlinestore.model.entity.Role;
-import com.store.onlinestore.model.entity.User;
-import com.store.onlinestore.model.repositories.RoleRepository;
-import com.store.onlinestore.model.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import ua.com.maist.model.entity.Role;
+import ua.com.maist.model.entity.User;
+import ua.com.maist.model.repositories.RoleRepository;
+import ua.com.maist.model.repositories.UserRepository;
+import ua.com.maist.service.UserService;
 
 import java.util.Collections;
 import java.util.HashSet;

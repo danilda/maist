@@ -4,5 +4,4 @@ INSERT INTO role VALUES (0 ,'ADMIN', 1);
 INSERT INTO role VALUES (1 ,'USER', 1);
 insert into AUTHORITIES values (0, 0);
 insert into AUTHORITIES values (1, 1)
-
-
+--insert into orders(id, user, date, total_price) values (0, 1, CURRENT_TIME(), 666);

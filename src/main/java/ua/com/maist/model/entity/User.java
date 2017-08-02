@@ -1,6 +1,6 @@
 package ua.com.maist.model.entity;
 
-import com.store.onlinestore.annotation.FieldEquals;
+import ua.com.maist.annotation.FieldEquals;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -33,6 +33,7 @@ public class User {
     @Email
     private String email;
     private int active;
+    @Version
     private int version;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"),

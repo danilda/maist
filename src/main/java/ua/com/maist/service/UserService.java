@@ -1,6 +1,7 @@
-package com.store.onlinestore.service;
+package ua.com.maist.service;
 
-import com.store.onlinestore.model.entity.User;
+
+import ua.com.maist.model.entity.User;
 
 /**
  * Created by dach1016 on 29.07.2017.

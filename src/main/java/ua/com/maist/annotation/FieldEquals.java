@@ -1,6 +1,6 @@
-package com.store.onlinestore.annotation;
+package ua.com.maist.annotation;
 
-import com.store.onlinestore.annotation.validator.FieldEqualsValidator;
+import ua.com.maist.annotation.validator.FieldEqualsValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

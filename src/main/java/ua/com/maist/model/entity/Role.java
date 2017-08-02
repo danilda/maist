@@ -12,6 +12,7 @@ public class Role {
     @Column(name = "id")
     private int id;
     private String role;
+    @Version
     private int version;
 
     protected Role() {

@@ -1,4 +1,4 @@
-package com.store.onlinestore.model.entity;
+package ua.com.maist.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,8 +12,9 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "user_id")
-    private int userId;
+
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
     private Date date;
     @Column(name = "total_price")
     private double totalPrice;
@@ -21,8 +22,8 @@ public class Order {
     public Order() {
     }
 
-    public Order(int userId, Date date, double totalPrice) {
-        this.userId = userId;
+    public Order(User user, Date date, double totalPrice) {
+        this.user = user;
         this.date = date;
         this.totalPrice = totalPrice;
     }
@@ -35,12 +36,13 @@ public class Order {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDate() {

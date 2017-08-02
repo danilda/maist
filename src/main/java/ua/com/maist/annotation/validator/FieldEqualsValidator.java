@@ -1,6 +1,6 @@
-package com.store.onlinestore.annotation.validator;
+package ua.com.maist.annotation.validator;
 
-import com.store.onlinestore.annotation.FieldEquals;
+import ua.com.maist.annotation.FieldEquals;
 import org.apache.log4j.Logger;
 
 import javax.validation.ConstraintValidator;
@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
 
 /**
  * Created by dach1016 on 01.08.2017.
- *
  */
 public class FieldEqualsValidator implements ConstraintValidator<FieldEquals, Object> {
     private Logger logger = Logger.getLogger(FieldEqualsValidator.class);
