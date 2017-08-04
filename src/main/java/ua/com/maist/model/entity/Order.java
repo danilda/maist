@@ -12,8 +12,8 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     private Date date;
     @Column(name = "total_price")
@@ -36,7 +36,7 @@ public class Order {
         this.id = id;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
     public User getUser() {
         return user;
     }
@@ -59,5 +59,15 @@ public class Order {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", user=" + user +
+                ", date=" + date +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }

@@ -36,8 +36,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByLogin(login);
     }
 
-    /* TODO - ставить акктуальную версию
-     * TODO - активировать аккаунт после специальным письмом на почту
+    /*
+
+        TODO - активировать аккаунт после специальным письмом на почту
+
       */
     @Override
     public void saveUser(User user) {

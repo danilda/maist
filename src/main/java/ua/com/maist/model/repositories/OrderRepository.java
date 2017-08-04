@@ -6,10 +6,9 @@ import ua.com.maist.model.entity.Order;
 
 /**
  * Created by dach1016 on 02.08.2017.
- *
  */
 
 @Repository("orderRepository")
 public interface OrderRepository extends JpaRepository<Order, Integer> {
-    Order findByUser(int userId);
+//    Order findByUser(int userId);
 }

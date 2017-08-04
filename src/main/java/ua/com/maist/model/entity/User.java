@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -23,22 +24,24 @@ public class User {
     @Size(min = 4, message = "Логин должен иметь не менее 4 символов")
     @NotNull
     private String login;
+    @Column
     @Size(min = 4, message = "Пароль должен иметь не менее 4 символов")
     @NotNull
     private String password;
     @Transient
     @NotBlank
     private String confirmPassword;
+    @Column
     @NotNull
     @Email
     private String email;
     private int active;
     @Version
     private int version;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>(0);
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
@@ -48,13 +51,12 @@ public class User {
     public User() {
     }
 
-    public User(String login, String password, String email, int active, int version,
+    public User(String login, String password, String email, int active,
                 Set<Role> roles, String firstName, String lastName, String phone) {
         this.login = login;
         this.password = password;
         this.email = email;
         this.active = active;
-        this.version = version;
         this.roles = roles;
         this.firstName = firstName;
         this.lastName = lastName;

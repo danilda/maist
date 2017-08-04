@@ -1,6 +1,8 @@
 package ua.com.maist.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by dach1016 on 24.07.2017.
@@ -15,12 +17,11 @@ public class Role {
     @Version
     private int version;
 
-    protected Role() {
+    public Role() {
     }
 
-    public Role(String role, int version) {
+    public Role(String role) {
         this.role = role;
-        this.version = version;
     }
 
     public int getId() {
@@ -45,5 +46,14 @@ public class Role {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                ", version=" + version +
+                '}';
     }
 }
