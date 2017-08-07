@@ -155,7 +155,7 @@ public class User {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         if (roles != null)
-            roles.forEach((e) -> sb.append(e.getRole()).append(", "));
+            roles.forEach((e) -> sb.append(e.getName()).append(", "));
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
