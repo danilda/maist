@@ -1,8 +1,8 @@
 package ua.com.maist.model.entity;
 
-import com.store.onlinestore.annotation.FieldEquals;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import ua.com.maist.annotation.FieldEquals;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -150,20 +150,10 @@ public class User {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        if (roles != null)
-            roles.forEach((e) -> sb.append(e.getRole()).append(", "));
         return "User{" +
                 "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", active=" + active +
-                ", version=" + version +
-                ", roles=" + sb.toString() +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phone='" + phone + '\'' +
                 '}';
     }
 }

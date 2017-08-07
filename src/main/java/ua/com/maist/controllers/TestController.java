@@ -1,6 +1,6 @@
-package com.store.onlinestore.controllers;
+package ua.com.maist.controllers;
 
-import com.store.onlinestore.model.entity.User;
+import ua.com.maist.model.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

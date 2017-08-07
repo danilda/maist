@@ -18,7 +18,7 @@
                 <form:password cssClass="password" path="password"/>
                 <form:errors path="password" cssClass="error-msg" /><br>
 
-                <form:label path="confirmPassword">Пароль</form:label><br>
+                <form:label path="confirmPassword">Подтвердите пароль</form:label><br>
                 <form:password cssClass="confirmPassword" path="confirmPassword"/>
                 <form:errors path="confirmPassword" cssClass="error-msg" /><br>
 

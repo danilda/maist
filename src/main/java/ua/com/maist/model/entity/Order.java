@@ -1,4 +1,4 @@
-package com.store.onlinestore.model.entity;
+package ua.com.maist.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;

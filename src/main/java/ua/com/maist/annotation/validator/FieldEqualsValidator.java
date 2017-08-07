@@ -1,7 +1,7 @@
-package com.store.onlinestore.annotation.validator;
+package ua.com.maist.annotation.validator;
 
-import com.store.onlinestore.annotation.FieldEquals;
 import org.apache.log4j.Logger;
+import ua.com.maist.annotation.FieldEquals;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
