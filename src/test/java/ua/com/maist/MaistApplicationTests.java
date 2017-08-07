@@ -1,4 +1,4 @@
-package com.store.onlinestore;
+package ua.com.maist;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OnlineStoreApplicationTests {
+public class MaistApplicationTests {
 
 	@Test
 	public void contextLoads() {

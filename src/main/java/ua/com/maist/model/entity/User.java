@@ -1,4 +1,4 @@
-package com.store.onlinestore.model.entity;
+package ua.com.maist.model.entity;
 
 import com.store.onlinestore.annotation.FieldEquals;
 import org.hibernate.validator.constraints.Email;

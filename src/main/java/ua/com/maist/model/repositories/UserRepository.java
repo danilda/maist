@@ -1,8 +1,7 @@
-package com.store.onlinestore.model.repositories;
+package ua.com.maist.model.repositories;
 
-import com.store.onlinestore.model.entity.User;
+import ua.com.maist.model.entity.User;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  * Created by dach1016 on 20.07.2017.

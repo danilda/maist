@@ -1,4 +1,4 @@
-package com.store.onlinestore.configuration;
+package ua.com.maist.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

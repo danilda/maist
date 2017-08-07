@@ -1,6 +1,6 @@
-package com.store.onlinestore.model.repositories;
+package ua.com.maist.model.repositories;
 
-import com.store.onlinestore.model.entity.Role;
+import ua.com.maist.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
