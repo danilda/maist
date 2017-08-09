@@ -1,6 +1,8 @@
 package ua.com.maist.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "item_type")
@@ -13,6 +15,10 @@ public class ItemType {
     private ItemType parent;
     @Column
     private String name;
+    @JoinTable(name = "item_type_attribute", joinColumns = @JoinColumn(name = "type_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    @ManyToMany
+    private Set<ItemAttribute> itemAttributes = new HashSet<>(0);
 
     public ItemType() {
     }
@@ -40,5 +46,22 @@ public class ItemType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<ItemAttribute> getItemAttributes() {
+        return itemAttributes;
+    }
+
+    public void setItemAttributes(Set<ItemAttribute> itemAttributes) {
+        this.itemAttributes = itemAttributes;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemType{" +
+                "id=" + id +
+                ", parent=" + (parent!=null?parent.getName():" - ") +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

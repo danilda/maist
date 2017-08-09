@@ -2,6 +2,7 @@ package ua.com.maist.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by danil on 30.07.2017.
@@ -16,6 +17,8 @@ public class Order {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     private Date date;
+    @OneToMany(mappedBy = "order")
+    private Set<OrderItem> orderItems;
     @Column(name = "total_price")
     private double totalPrice;
 
@@ -59,6 +62,14 @@ public class Order {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Set<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     @Override
