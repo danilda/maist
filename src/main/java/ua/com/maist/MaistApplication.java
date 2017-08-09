@@ -29,9 +29,6 @@ public class MaistApplication extends SpringBootServletInitializer {
 
 		UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
 		User user = userRepository.findByLogin("admin");
-
-		System.out.println("aaaaaaa");
-		System.out.println(user.toString());
 		log.info(user.toString());
 
 	}

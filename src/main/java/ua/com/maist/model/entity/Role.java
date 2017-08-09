@@ -4,15 +4,13 @@ import javax.persistence.*;
 
 /**
  * Created by dach1016 on 24.07.2017.
- *
  */
 @Entity
-@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="role_id")
-    private int roleId;
+    @Column(name = "id")
+    private int id;
     private String role;
     private int version;
 
@@ -24,12 +22,12 @@ public class Role {
         this.version = version;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public int getId() {
+        return id;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRole() {
@@ -46,5 +44,13 @@ public class Role {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

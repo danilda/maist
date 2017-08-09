@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 
 /**
  * Created by dach1016 on 24.07.2017.
- *
  */
 
 @Configuration
@@ -39,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
-                .rolePrefix("R_")
+                .rolePrefix("")
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
     }
@@ -51,21 +50,23 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/home").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/registration").permitAll()
-                .antMatchers("/admin/**").hasAuthority("R_ADMIN").anyRequest()
-                .authenticated().and().csrf().disable().formLogin()
+                .antMatchers("/user").hasAnyAuthority("ADMIN", "USER")
+                .antMatchers("/admin").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
+                .and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/admin/home")
-                .usernameParameter("email")
+                .defaultSuccessUrl("/")
+                .usernameParameter("login")
                 .passwordParameter("password")
-                .and().logout()
-                .deleteCookies("cookies")
+                .and().logout().deleteCookies("JSESSIONID")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
                 .accessDeniedPage("/access-denied")
-                .and().rememberMe().key("cookies");
-        http.headers().frameOptions().disable();
+                .and().rememberMe().useSecureCookie(true).tokenValiditySeconds(1209600)
+                .and().headers().frameOptions().disable(); // for H2 console
     }
 
     @Override
