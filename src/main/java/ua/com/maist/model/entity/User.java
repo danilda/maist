@@ -15,25 +15,25 @@ import java.util.Set;
  */
 
 @Entity
-@FieldEquals(firstField = "password", secondField = "confirmPassword", message = "Не соответствует указанному паролю")
+@FieldEquals(firstField = "password", secondField = "confirmPassword", message = "{user.confirmPassword.size.error}")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(unique = true)
-    @Size(min = 4, message = "Логин должен иметь не менее 4 символов")
-    @NotNull
+    @Size(min = 4, max = 20, message = "{user.login.size.error}")
+    @NotNull(message = "{user.field.null.error}")
     private String login;
     @Column
-    @Size(min = 4, message = "Пароль должен иметь не менее 4 символов")
-    @NotNull
+    @Size(min = 4, message = "{user.password.size.error}")
+    @NotNull(message = "{user.field.null.error}")
     private String password;
     @Transient
-    @NotBlank
+    @NotBlank(message = "{user.field.null.error}")
     private String confirmPassword;
     @Column
-    @NotNull
-    @Email
+    @NotNull(message = "{user.field.null.error}")
+    @Email(message = "{user.email.invalid.error}")
     private String email;
     private int active;
     @Version

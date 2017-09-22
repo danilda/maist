@@ -37,10 +37,8 @@ public class UserServiceImpl implements UserService {
     }
 
     /*
-
         TODO - активировать аккаунт после специальным письмом на почту
-
-      */
+     */
     @Override
     public void saveUser(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
