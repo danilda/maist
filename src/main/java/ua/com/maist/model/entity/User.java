@@ -1,5 +1,6 @@
 package ua.com.maist.model.entity;
 
+import org.hibernate.annotations.ColumnDefault;
 import ua.com.maist.annotation.FieldEquals;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -35,7 +36,8 @@ public class User {
     @NotNull(message = "{user.field.null.error}")
     @Email(message = "{user.email.invalid.error}")
     private String email;
-    private int active;
+    @ColumnDefault(value = "false")
+    private boolean active;
     @Version
     private int version;
     @ManyToMany
@@ -51,7 +53,7 @@ public class User {
     public User() {
     }
 
-    public User(String login, String password, String email, int active,
+    public User(String login, String password, String email, boolean active,
                 Set<Role> roles, String firstName, String lastName, String phone) {
         this.login = login;
         this.password = password;
@@ -95,11 +97,11 @@ public class User {
         this.email = email;
     }
 
-    public int getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

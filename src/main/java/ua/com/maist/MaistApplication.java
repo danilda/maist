@@ -1,7 +1,7 @@
 package ua.com.maist;
 
-import ua.com.maist.model.entity.Item;
-import ua.com.maist.model.entity.Order;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.com.maist.model.entity.Role;
 import ua.com.maist.model.entity.User;
 import ua.com.maist.model.repositories.*;
@@ -12,14 +12,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import ua.com.maist.service.email.EmailSender;
 
-import javax.sql.DataSource;
 import java.util.*;
 
 @SpringBootApplication
 @Configuration
 public class MaistApplication extends SpringBootServletInitializer {
     private static final Logger log = Logger.getLogger(MaistApplication.class);
+
 
 
     @Override
@@ -78,6 +79,7 @@ public class MaistApplication extends SpringBootServletInitializer {
         OrderItemRepository orderItemRepository = (OrderItemRepository) ctx.getBean("orderItemRepository");
         orderItemRepository.findAll().forEach(log::info);
         log.info("Find OrderItem By Item -> " + orderItemRepository.findByItem(itemRepository.getOne((long) 1)).toString());
+
     }
 
 }

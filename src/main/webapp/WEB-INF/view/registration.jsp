@@ -45,7 +45,6 @@
             </fieldset>
             <footer>
                 <button class="btnReg"><spring:message code="registration.registrationButton"/></button>
-                <input type="submit" class="btnReg" value="Зарегистрировать"/>
             </footer>
         </form:form>
         <div>${error}</div>

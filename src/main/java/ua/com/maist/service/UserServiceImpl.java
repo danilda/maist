@@ -41,8 +41,9 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void saveUser(User user) {
+        System.out.println("defaultRole ---> " + defaultRole);
         user.setPassword(encoder.encode(user.getPassword()));
-        user.setActive(1);
+        user.setActive(true);
         user.setVersion(1);
         user.setConfirmPassword(user.getPassword()); // in encoding process two equal become no equal.
         Role role = roleRepository.findByName(defaultRole);
